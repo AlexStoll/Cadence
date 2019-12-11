@@ -3,4 +3,4 @@
 
 Cadence is a workout tracking application developed by [Alex Stoll](https://www.alexstoll.work).
 
-See a live demo of the project [here](heroku.com).
+See a live demo of the project [here](https://shielded-coast-75020.herokuapp.com/).
