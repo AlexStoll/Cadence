@@ -1,6 +1,13 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+// Colors
+$cadence-teal: #43EED7;
+$cadence-dark-teal: #4EBFB3;
+$light-gray: #777;
+$dark-gray: #555;
+$gray-medium-light: #eaeaea;
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,7 +27,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: $light-gray;
 }
 
 p {
@@ -28,14 +35,13 @@ p {
   line-height: 1.7em;
 }
 
-.btn-primary:hover {
-  background-color: #43EED7;
-  border-color: #43EED7;
-}
-
 .btn-primary {
-  background-color: #4EBFB3;
-  border-color: #4EBFB3;
+  background-color: $cadence-dark-teal;
+  border-color: $cadence-dark-teal;
+  &:hover {
+    background-color: $cadence-teal;
+    border-color: $cadence-teal;
+  }
 }
 /* header */
 
@@ -43,16 +49,14 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #43EED7;
+  color: $cadence-teal;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-}
-
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 /* footer */
@@ -62,28 +66,20 @@ footer {
   padding-top: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-}
-
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 15px;
+  border-top: 1px solid $gray-medium-light;
+  color: $light-gray;
+  a {
+    color: $dark-gray;
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
