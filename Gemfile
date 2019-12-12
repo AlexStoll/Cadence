@@ -9,6 +9,8 @@ gem 'webpacker',      '4.0.7'
 gem 'turbolinks',     '5.2.0'
 gem 'jbuilder',       '2.9.1'
 gem 'bootsnap',       '1.4.4', require: false
+gem 'bcrypt',         '3.1.13'
+gem 'strong_password', '~> 0.0.8'
 
 group :development, :test do
   gem 'sqlite3', '1.4.1'
