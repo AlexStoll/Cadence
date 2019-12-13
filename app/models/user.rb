@@ -9,4 +9,10 @@ class User < ApplicationRecord
 
   # Using the strong_password gem. https://www.github.com/bdmac/strong_password
   validates :password, password_strength: { min_entropy: 10 }
+
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
