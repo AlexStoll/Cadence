@@ -21,33 +21,25 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  test "login with valid information" do
+  test "login with valid information followed by logout" do
     get login_path
-    assert_template "sessions/new"
-    
-    # Logging in with fixture.yml info
-    post login_path, params: { session: {email: @user.email, 
-                                         password: 'CAtwostar2*'}} 
-    
-    # Logged in successfully, affirming and following redirect to user's page
+    post login_path, params: { session: { email:    @user.email,
+                                          password: 'CAtwostar2*' } }
+    assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
-    
-    # Check for correct links
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
     assert_select "a[href=?]", user_path(@user)
-  end
-
-  test "logout" do
-    get login_path
-    
-    # Logging in with fixture.yml info
-    post login_path, params: { session: {email: @user.email, 
-                                         password: 'CAtwostar2*'}} 
-
     delete logout_path
     assert_not is_logged_in?
+    assert_redirected_to root_url
+    # Simulate a user clicking logout in a second window.
+    delete logout_path
+    follow_redirect!
+    assert_select "a[href=?]", login_path
+    assert_select "a[href=?]", logout_path,      count: 0
+    assert_select "a[href=?]", user_path(@user), count: 0
   end
 end
